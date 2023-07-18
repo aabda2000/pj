@@ -10,23 +10,25 @@ public class AnimalReader implements IRequestPets {
 	}
 
 	public ArrayList<Animal> before_each_spec() {
-		ArrayList<Animal> animals = new ArrayList<Animal>();
+		AnimalFilter animalFilter= new AnimalFilter();
+		ArrayList<Animal> animals= new ArrayList<Animal>() ;
 		animals = petsLibrary.GetAllPets();
 		return animals;
-
+		
 	}
-
-	public ArrayList<Animal> filter_by_the_type_given(AnimalType animalType) {
-		AnimalFilter animalFilter = new AnimalFilter();
-		ArrayList<Animal> animals = new ArrayList<Animal>();
-		ArrayList<Animal> filteredAnimals = new ArrayList<Animal>();
+	
+	public ArrayList<Animal> filter_by_the_type_given(AnimalFilter animalFilter) {
+		//AnimalFilter animalFilter= new AnimalFilter();
+		ArrayList<Animal> animals= new ArrayList<Animal>() ;
+		ArrayList<Animal> filteredAnimals= new ArrayList<Animal>() ;
 		animals = petsLibrary.GetAllPets();
-
-		for (Animal animal : animalFilter.By(animals, new TypeFilterSpecification(animalType))) {
+		
+		for (Animal animal : animalFilter.
+				By(animals)) {
 			filteredAnimals.add(animal);
 		}
-		return filteredAnimals;
-
+        return filteredAnimals;
+		
 	}
 
 }

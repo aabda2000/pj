@@ -3,6 +3,8 @@ package ocp.infra;
 import java.util.ArrayList;
 
 import ocp.domain.Animal;
+import ocp.domain.AnimalFilter;
+import ocp.domain.AnimalFilterSpecification;
 import ocp.domain.AnimalType;
 import ocp.domain.IRequestPets;
 import ocp.domain.TypeFilterSpecification;
@@ -27,11 +29,11 @@ public class ConsoleAdapter {
 		});
 	}
 
-	public void get_pets_by_the_type_given(AnimalType animalType) {
+	public void get_pets_by_the_spec_given(AnimalFilter af) {
 		// from infra to domain
 
 		// busines logic
-		Iterable<Animal> pets = this.animalReader.filter_by_the_type_given(animalType);
+		Iterable<Animal> pets = this.animalReader.filter_by_the_type_given(af);
 		// from domain to Infra
 		pets.forEach((element) -> {
 			System.out.println(element.getName());
@@ -39,4 +41,9 @@ public class ConsoleAdapter {
 	}
 
 }
+
+			
+
+
+	
 
